@@ -3,8 +3,13 @@ using System.Collections;
 
 public class Apple : MonoBehaviour {
 
+	//Game picker
 	public Picker picker;
 
+	/**
+	 * @param Picker picker : Game Picker
+	 * set the game Picker
+	 */
 	public void setPicker(Picker picker) {
 		this.picker = picker;
 	}

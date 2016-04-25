@@ -3,15 +3,23 @@ using System.Collections;
 
 public class Picker : MonoBehaviour {
 
+	//Lifes at the beggining of the game
 	public int lifes = 3;
+
+	// lifes bars
 	public GameObject lifeBar1;
 	public GameObject lifeBar2;
 	public GameObject lifeBar3;
 
+	// Picker move speed
 	public float pickerSpeed;
 
+	// score ui panel
 	public GameObject uiScore;
 
+	/**
+	 * Move the picker to the right according to the pickerSpeed
+	 */
 	public void moveRight(){
 		GameObject go = this.gameObject;
 		if (go.transform.position.x < 5f) {
@@ -20,6 +28,9 @@ public class Picker : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Move the picker to the left according to the pickerSpeed
+	 */
 	public void moveLeft(){
 		GameObject go = this.gameObject;
 		if (go.transform.position.x > -5f) {
@@ -28,6 +39,9 @@ public class Picker : MonoBehaviour {
 		}
 	}
 
+	/**
+	 *  Decrease life count and remove the good life bar
+	 */
 	public void loseLife() {
 
 		switch (this.lifes) {
@@ -45,11 +59,18 @@ public class Picker : MonoBehaviour {
 		--this.lifes;
 	}
 
+	/**
+	 * @param Collision col : Collision unity object
+	 * Trigger when picker get an apple, increase score and destroy the apple
+	 */
 	void OnCollisionEnter(Collision col) {
 		Destroy(col.gameObject);
 		Main.score++;
 	}
 
+	/**
+	 * reset the picker lifes, lifes bars and position at the origin
+	 */
 	public void reset() {
 		this.lifes = 3;
 		this.lifeBar1.SetActive(true);

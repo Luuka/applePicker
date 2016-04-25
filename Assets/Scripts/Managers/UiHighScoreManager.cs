@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UiHighScoreManager : MonoBehaviour {
 
+	// UI highscore text
 	public GameObject highScoreText;
 
 	// Use this for initialization
