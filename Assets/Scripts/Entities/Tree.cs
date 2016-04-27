@@ -7,12 +7,21 @@ public class Tree : MonoBehaviour {
 	public int appleCount;
 
 	//Delta time between two apples's launchs
-	public float timeBetweenTwoApples;
+	public static float timeBetweenTwoApples = 4f;
+
+	public static void decreaseTimeBetweenTwoApples() {
+		if (Tree.timeBetweenTwoApples > 1) {
+			Tree.timeBetweenTwoApples -= 0.5f;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
-		this.appleCount = Random.Range(1, 10);
-		this.timeBetweenTwoApples = Random.Range (0.5f, 2f);
+		if (Tree.timeBetweenTwoApples >= 2) {
+			this.appleCount = Random.Range (1, 10);
+		} else {
+			this.appleCount = Random.Range(1, 5);
+		}
 	}
 	
 }

@@ -27,7 +27,6 @@ public class Main : MonoBehaviour {
 	void Start () {
 		this.picker = pickerGo.GetComponent<Picker> ();
 		addTree (); // Add the first tree to launch the game
-		gameOverUi.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -46,10 +45,11 @@ public class Main : MonoBehaviour {
 		this.timeLaunchingApple += Time.deltaTime;
 
 		//It stay apple on the tree
-		if (tree != null && tree.appleCount > 0 && this.timeLaunchingApple >= tree.timeBetweenTwoApples) {
+		if (tree != null && tree.appleCount > 0 && this.timeLaunchingApple >= Tree.timeBetweenTwoApples) {
 			this.launchApple();
 			this.timeLaunchingApple = 0f;
 		} else if(tree.appleCount == 0) {
+			Tree.decreaseTimeBetweenTwoApples();
 			this.addTree();
 		}
 
@@ -68,10 +68,14 @@ public class Main : MonoBehaviour {
 	 */
 	public void restartGame() {
 		Main.score = 0;
+
+		gameOverUi.gameObject.SetActive (false);
+
 		Destroy (this.treeGo);
 		this.picker.reset ();
+
+		Tree.timeBetweenTwoApples = 4f;
 		this.addTree ();
-		gameOverUi.gameObject.SetActive (false);
 	}
 
 	/**

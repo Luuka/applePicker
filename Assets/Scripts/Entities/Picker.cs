@@ -66,6 +66,7 @@ public class Picker : MonoBehaviour {
 	void OnCollisionEnter(Collision col) {
 		Destroy(col.gameObject);
 		Main.score++;
+
 	}
 
 	/**
@@ -78,6 +79,5 @@ public class Picker : MonoBehaviour {
 		this.lifeBar3.SetActive(true);
 
 		this.gameObject.transform.position = new Vector3 (0, -4f, 0);
-
 	}
 }
